@@ -1,5 +1,86 @@
 {
   "sections": {
+    "1658838818be1a64ee": {
+      "type": "advance-rich-text",
+      "blocks": {
+        "165883881864f5f9e7-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1",
+            "title_custom_styling": false,
+            "title_color": "#000000",
+            "title_letter_spacing": 1,
+            "title_shadow": 0,
+            "title_shadow_color": "#000000",
+            "title_custom_position": false,
+            "title_top_margin": 0,
+            "title_effect": "none",
+            "title_animation_duration": "500",
+            "title_show_animation_once": true
+          }
+        },
+        "165883881864f5f9e7-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
+            "text_custom_styling": false,
+            "text_color": "#000000",
+            "text_letter_spacing": 1,
+            "text_shadow": 0,
+            "text_shadow_color": "#000000",
+            "text_custom_position": false,
+            "text_top_margin": 0,
+            "text_effect": "none",
+            "text_animation_duration": "500",
+            "text_show_animation_once": true
+          }
+        },
+        "165883881864f5f9e7-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_border_radius": false,
+            "button_custom_styling": false,
+            "button_color": "#000000",
+            "text_button_color": "#FFFFFF",
+            "button_custom_position": false,
+            "button_top_margin": 0,
+            "button_effect": "none",
+            "button_animation_duration": "500",
+            "button_show_animation_once": true
+          }
+        }
+      },
+      "block_order": [
+        "165883881864f5f9e7-0",
+        "165883881864f5f9e7-1",
+        "165883881864f5f9e7-2"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "content_position": "center",
+        "full_width": true,
+        "custom_background": false,
+        "background_color": "#FFFFFF",
+        "content_background_color": "#FFFFFF",
+        "content_background_color_opacity": 1,
+        "section_topline": false,
+        "section_bottomline": false,
+        "section_border_size": 1.5,
+        "section_border_color": "#000000",
+        "content_border": false,
+        "content_box_shadow": false,
+        "custom_position": false,
+        "section_margin": 5,
+        "content_margin": 0,
+        "content_effect": "none",
+        "content_animation_duration": "500",
+        "content_show_animation_once": true
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -21,7 +102,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
+            "button_link_1": "shopify:\/\/collections\/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -53,7 +134,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "<p>Talk about your brand</p>",
+            "heading": "<p>Talk about your brand<\/p>",
             "heading_size": "h1"
           }
         },
@@ -69,6 +150,8 @@
         "text"
       ],
       "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
         "color_scheme": "background-1",
         "full_width": true,
         "padding_top": 40,
@@ -80,17 +163,24 @@
       "settings": {
         "title": "Featured products",
         "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
         "collection": "all",
         "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "background-1",
+        "full_width": false,
         "show_view_all": false,
-        "swipe_on_mobile": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
         "image_ratio": "adapt",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
+        "enable_quick_add": false,
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 28,
         "padding_bottom": 36
       }
@@ -137,8 +227,8 @@
       "type": "video",
       "settings": {
         "heading": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "heading_size": "h1",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
         "description": "",
         "full_width": false,
         "color_scheme": "background-1",
@@ -192,15 +282,16 @@
         "background_style": "none",
         "button_label": "",
         "button_link": "",
-        "swipe_on_mobile": false,
         "color_scheme": "background-1",
         "columns_mobile": "1",
+        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     }
   },
   "order": [
+    "1658838818be1a64ee",
     "image_banner",
     "rich_text",
     "featured_collection",
