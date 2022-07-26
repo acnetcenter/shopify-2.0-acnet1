@@ -1,0 +1,633 @@
+
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-rich-text.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+
+<div class="rich-text color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width{% endif %}"
+     style="{%if section.settings.custom_background%}background: {{ section.settings.background_color }};{% endif %} 
+            {%if section.settings.section_topline%}border-top: solid {{ section.settings.section_border_size }}px {{ section.settings.section_border_color }}; {% endif %}  
+            {%if section.settings.section_bottomline%}border-bottom: solid {{ section.settings.section_border_size }}px {{ section.settings.section_border_color }}; {% endif %}
+            {%if section.settings.custom_position%}margin-top: {{ section.settings.section_margin }}rem; margin-bottom: {{ section.settings.section_margin }}rem;{% endif %}
+           ">
+  <div class="rich-text__blocks"
+       {%if section.settings.content_effect != 'none'%}data-aos="{{section.settings.content_effect}}" data-aos-once="{{ section.settings.content_show_animation_once }}" data-aos-duration="{{ section.settings.content_animation_duration }}" data-aos-offset="0"{% endif %}
+       style="overflow:hidden;
+              {%if section.settings.custom_position%}margin-top: {{ section.settings.content_margin }}rem; margin-bottom: {{ section.settings.content_margin }}rem;{% endif %}
+       		  {%if section.settings.content_border%}border: solid {{ section.settings.section_border_size }}px {{ section.settings.section_border_color }}; padding: 20px;{% endif %}
+              {%if section.settings.custom_background%}background: {{ section.settings.content_background_color | color_modify: 'alpha', section.settings.content_background_color_opacity }};{% endif %}
+              {%if section.settings.content_box_shadow %}box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); padding: 20px;{% endif %}
+              {%if section.settings.content_background_color != section.settings.background_color%}padding: 20px;{% endif %}
+              ">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'heading' -%}
+          <h2 class="{{ block.settings.heading_size }}"{{ block.shopify_attributes }}
+			  {%if block.settings.title_effect != 'none'%}data-aos="{{block.settings.title_effect}}" data-aos-once="{{ block.settings.title_show_animation_once }}" data-aos-duration="{{ block.settings.title_animation_duration }}" data-aos-offset="0"{% endif %}
+              style="{%if block.settings.title_custom_styling%}color: {{block.settings.title_color}};{% endif %}
+                     {%if block.settings.title_letter_spacing > 0 %}letter-spacing: {{ block.settings.title_letter_spacing }}px;{% endif %}  
+                     {%if block.settings.title_shadow > 0 %}text-shadow: {{ block.settings.title_shadow }}px {{ block.settings.title_shadow }}px 6px {{ block.settings.title_shadow_color }};{% endif %}
+              		 {%if block.settings.title_custom_position%}margin-top: {{ block.settings.title_top_margin }}rem;{% endif %}"
+              >
+            {{ block.settings.heading | escape }}</h2>
+        {%- when 'text' -%}
+          <div class="rich-text__text rte"{{ block.shopify_attributes }}
+               {%if block.settings.text_effect != 'none'%}data-aos="{{block.settings.text_effect}}" data-aos-once="{{ block.settings.text_show_animation_once }}" data-aos-duration="{{ block.settings.text_animation_duration }}" data-aos-offset="0"{% endif %}
+               style="{%if block.settings.text_custom_styling%}color:{{ block.settings.text_color }};{% endif %}
+                      {%if block.settings.text_letter_spacing > 0 %}letter-spacing: {{ block.settings.text_letter_spacing }}px;{% endif %}  
+                      {%if block.settings.text_shadow > 0 %}text-shadow: {{ block.settings.text_shadow }}px {{ block.settings.text_shadow }}px 6px {{ block.settings.text_shadow_color }};{% endif %}
+                      {%if block.settings.text_custom_position%}margin-top: {{ block.settings.text_top_margin }}rem;{% endif %}"
+               >
+            {{ block.settings.text }}</div>
+        {%- when 'button' -%}
+          <div style="margin-bottom:15px;"
+               {%if block.settings.button_effect != 'none'%}data-aos="{{block.settings.button_effect}}" data-aos-once="{{ block.settings.button_show_animation_once }}" data-aos-duration="{{ block.settings.button_animation_duration }}" data-aos-offset="0"{% endif %}
+          >
+            <a{% if block.settings.button_link == blank %} aria-disabled="true"{% else %} href="{{ block.settings.button_link }}"{% endif %} class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}" 
+              {{ block.shopify_attributes }}
+              style="{%if block.settings.button_custom_styling%}
+                       box-shadow:none; opacity:1; color:{{ block.settings.text_button_color }}; background-color: {{ block.settings.button_color }}; 
+                     {% endif %} 
+                     {%if block.settings.button_border_radius == true %}border-radius: 25px;{% endif %} 
+                     {%if block.settings.button_custom_position%}margin-top: {{ block.settings.button_top_margin }}rem;{% endif %}"
+              >
+              {{ block.settings.button_label | escape }}
+            </a>
+    	  </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Advance Rich Text",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "accent-1"
+        },
+        {
+          "value": "accent-2",
+          "label": "accent-2"
+        },
+        {
+          "value": "background-1",
+          "label": "background-1"
+        },
+        {
+          "value": "background-2",
+          "label": "background-2"
+        },
+        {
+          "value": "inverse",
+          "label": "inverse"
+        }
+      ],
+      "default": "background-1",
+      "label": "Color Scheme"
+    },
+
+    {
+      "type": "select",
+      "id": "content_position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Content Position"
+    },
+
+  
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "t:sections.rich-text.settings.full_width.label"
+    },
+    {
+      "type": "header",
+      "content": "BACKGROUND"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_background",
+      "default": false,
+      "label": "Use Custom Background"
+    },
+    {
+      "type":"color",
+      "id":"background_color",
+      "label":"Section Background Color",
+      "default":"#FFFFFF"
+    },
+    {
+      "type":"color",
+      "id":"content_background_color",
+      "label":"Content Background Color",
+      "default":"#FFFFFF"
+    },
+	{
+	  "type": "range",
+	  "id": "content_background_color_opacity",
+	  "min": 0,
+	  "max": 1,
+	  "step": 0.1,
+	  "unit": "%",
+	  "label": "Content Background Transparency",
+	  "default": 1
+	},
+    {
+      "type": "header",
+      "content": "BORDERS"
+    },            
+    {
+       "type": "checkbox",
+       "id": "section_topline",
+       "label": "Section Top Line", 
+	   "default": false
+    },
+    {
+       "type": "checkbox",
+       "id": "section_bottomline",
+       "label": "Section Bottom Line", 
+	   "default": false
+    },
+    {
+        "type": "range",
+        "id": "section_border_size",
+        "min": 1,
+        "max": 5,
+        "step": 0.5,
+        "unit": "px",
+        "label": "Section - Border Size",
+        "default": 1.5
+    },
+    {
+       "type": "color",
+       "id": "section_border_color",
+       "label": "Section - Border Color",
+	   "default": "#000000"
+    },
+    {
+       "type": "checkbox",
+       "id": "content_border",
+       "label": "Content Border", 
+	   "default": false
+    },
+    {
+       "type": "checkbox",
+       "id": "content_box_shadow",
+       "label": "Content Box Shadow",
+       "default": false
+    },
+    {
+      "type": "header",
+      "content": "CUSTOM POSITION"
+    },
+    {
+       "type": "checkbox",
+       "id": "custom_position",
+       "label": "Use Custom Position", 
+	   "default": false
+    },
+    {
+        "type": "range",
+        "id": "section_margin",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "rem",
+        "label": "Top/Bottom Section Margin",
+        "default": 5
+    },
+    {
+        "type": "range",
+        "id": "content_margin",
+        "min": -4,
+        "max": 5,
+        "step": 1,
+        "unit": "rem",
+        "label": "Top/Bottom Content Margin",
+        "default": 0
+    },
+	{
+		"type": "header",
+		"content": "ANIMATION"
+	},
+	{
+		"type": "select",
+		"id": "content_effect",
+		"options": [
+			{ "value": "none", "label": "none"},
+            { "value": "fade-up", "label": "fade Up"},
+            { "value": "fade-right", "label": "fade Right"},
+            { "value": "fade-left", "label": "fade Left"},
+			{ "value": "ScaleZoomIn", "label": "Scale Zoom In"}
+		],
+        "label": "Animation Type",
+        "default": "none"
+    },
+	{
+		"type": "select",
+		"id": "content_animation_duration",
+		"options": [
+			{ "value": "500", "label": "Fast"},
+			{ "value": "1000", "label": "Normal"},
+            { "value": "2000", "label": "Slow"}
+		],
+        "label": "Collection Animation Duration",
+        "default": "500"
+    },
+    {
+        "type":"checkbox",
+        "id":"content_show_animation_once",
+        "label":"Show Animation only Once",
+        "default":true
+    }
+
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "t:sections.rich-text.blocks.heading.name",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Talk about your brand",
+          "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.rich-text.blocks.heading.settings.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.rich-text.blocks.heading.settings.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.rich-text.blocks.heading.settings.heading_size.options__3.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.rich-text.blocks.heading.settings.heading_size.label"
+        },
+        {
+          "type": "header",
+          "content": "CUSTOM STYLING"
+        },
+        {
+          "type":"checkbox",
+          "id":"title_custom_styling",
+          "label":"Use Custon Styling",
+          "default":false
+        },
+        {
+          "type":"color",
+          "id":"title_color",
+          "label":"Text Color",
+          "default":"#000000"
+        },
+        {
+          "type": "range",
+          "id": "title_letter_spacing",
+          "min": 0,
+          "max": 15,
+          "step": 0.5,
+          "unit": "px",
+          "label": "Letter Spacing",
+          "default": 1
+        },
+        {
+          "type": "range",
+          "id": "title_shadow",
+          "min": 0,
+          "max": 10,
+          "step": 0.5,
+          "unit": "px",
+          "label": "Shadow Size",
+          "default": 0
+        },
+        {
+          "type":"color",
+          "id":"title_shadow_color",
+          "label":"Shadow Color",
+          "default":"#000000"
+        },
+        {
+          "type": "header",
+          "content": "CUSTOM TOP MARGIN"
+        },
+        {
+           "type": "checkbox",
+           "id": "title_custom_position",
+           "label": "Use Custom Top Margin", 
+           "default": false
+        },
+        {
+            "type": "range",
+            "id": "title_top_margin",
+            "min": 0,
+            "max": 5,
+            "step": 1,
+            "unit": "rem",
+            "label": "Top Margin",
+            "default": 0
+        },
+        {
+          "type": "header",
+          "content": "ANIMATION"
+        },
+        {
+            "type": "select",
+            "id": "title_effect",
+            "options": [
+                { "value": "none", "label": "none"},
+                { "value": "fade-up", "label": "fade Up"},
+                { "value": "fade-right", "label": "fade Right"},
+                { "value": "fade-left", "label": "fade Left"}
+            ],
+            "label": "Animation Type",
+            "default": "none"
+        },
+        {
+            "type": "select",
+            "id": "title_animation_duration",
+            "options": [
+                { "value": "500", "label": "Fast"},
+                { "value": "1000", "label": "Normal"},
+                { "value": "2000", "label": "Slow"}
+            ],
+            "label": "Collection Animation Duration",
+            "default": "500"
+        },
+        {
+          "type":"checkbox",
+          "id":"title_show_animation_once",
+          "label":"Show Animation only Once",
+          "default":true
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.rich-text.blocks.text.name",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+          "label": "t:sections.rich-text.blocks.text.settings.text.label"
+        },
+        {
+          "type": "header",
+          "content": "CUSTOM STYLING"
+        },
+        {
+          "type":"checkbox",
+          "id":"text_custom_styling",
+          "label":"Use Custon Styling",
+          "default":false
+        },
+        {
+          "type":"color",
+          "id":"text_color",
+          "label":"Text Color",
+          "default":"#000000"
+        },
+        {
+          "type": "range",
+          "id": "text_letter_spacing",
+          "min": 0,
+          "max": 15,
+          "step": 0.5,
+          "unit": "px",
+          "label": "Letter Spacing",
+          "default": 1
+        },
+        {
+          "type": "range",
+          "id": "text_shadow",
+          "min": 0,
+          "max": 10,
+          "step": 0.5,
+          "unit": "px",
+          "label": "Shadow Size",
+          "default": 0
+        },
+        {
+          "type":"color",
+          "id":"text_shadow_color",
+          "label":"Shadow Color",
+          "default":"#000000"
+        },
+        {
+          "type": "header",
+          "content": "CUSTOM MARGIN"
+        },
+        {
+           "type": "checkbox",
+           "id": "text_custom_position",
+           "label": "Use Custom Top Margin", 
+           "default": false
+        },
+        {
+            "type": "range",
+            "id": "text_top_margin",
+            "min": 0,
+            "max": 5,
+            "step": 1,
+            "unit": "rem",
+            "label": "Top Margin",
+            "default": 0
+        },
+        {
+          "type": "header",
+          "content": "ANIMATION"
+        },
+        {
+            "type": "select",
+            "id": "text_effect",
+            "options": [
+                { "value": "none", "label": "none"},
+                { "value": "fade-up", "label": "fade Up"},
+                { "value": "fade-right", "label": "fade Right"},
+                { "value": "fade-left", "label": "fade Left"}
+            ],
+            "label": "Animation Type",
+            "default": "none"
+        },
+        {
+            "type": "select",
+            "id": "text_animation_duration",
+            "options": [
+                { "value": "500", "label": "Fast"},
+                { "value": "1000", "label": "Normal"},
+                { "value": "2000", "label": "Slow"}
+            ],
+            "label": "Collection Animation Duration",
+            "default": "500"
+        },
+        {
+          "type":"checkbox",
+          "id":"text_show_animation_once",
+          "label":"Show Animation only Once",
+          "default":true
+        }
+
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:sections.rich-text.blocks.button.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "t:sections.rich-text.blocks.button.settings.button_label.label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.rich-text.blocks.button.settings.button_link.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "default": false,
+          "label": "t:sections.rich-text.blocks.button.settings.button_style_secondary.label"
+        },
+        {
+          "type":"checkbox",
+          "id":"button_border_radius",
+          "label":"Round Border",
+          "default":false
+        },
+        {
+          "type": "header",
+          "content": "CUSTOM COLORS"
+        },
+        {
+          "type":"checkbox",
+          "id":"button_custom_styling",
+          "label":"Use Custon Colors",
+          "default":false
+        },
+        {
+          "type":"color",
+          "id":"button_color",
+          "label":"Button Color",
+          "default":"#000000"
+        },
+        {
+          "type":"color",
+          "id":"text_button_color",
+          "label":"Text Color",
+          "default":"#FFFFFF"
+        },
+        {
+          "type": "header",
+          "content": "CUSTOM MARGIN"
+        },
+        {
+           "type": "checkbox",
+           "id": "button_custom_position",
+           "label": "Use Custom Top Margin", 
+           "default": false
+        },
+        {
+            "type": "range",
+            "id": "button_top_margin",
+            "min": 0,
+            "max": 5,
+            "step": 1,
+            "unit": "rem",
+            "label": "Top Margin",
+            "default": 0
+        },
+        {
+          "type": "header",
+          "content": "ANIMATION"
+        },
+        {
+            "type": "select",
+            "id": "button_effect",
+            "options": [
+                { "value": "none", "label": "none"},
+                { "value": "fade-up", "label": "fade Up"},
+                { "value": "fade-right", "label": "fade Right"},
+                { "value": "fade-left", "label": "fade Left"}
+            ],
+            "label": "Animation Type",
+            "default": "none"
+        },
+        {
+            "type": "select",
+            "id": "button_animation_duration",
+            "options": [
+                { "value": "500", "label": "Fast"},
+                { "value": "1000", "label": "Normal"},
+                { "value": "2000", "label": "Slow"}
+            ],
+            "label": "Collection Animation Duration",
+            "default": "500"
+        },
+        {
+          "type":"checkbox",
+          "id":"button_show_animation_once",
+          "label":"Show Animation only Once",
+          "default":true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advance Rich Text",
+      "category": "Advance Sections",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

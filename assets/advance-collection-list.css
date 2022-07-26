@@ -1,0 +1,254 @@
+/* Animaciones AOS Library*/
+/* https://github.com/michalsnik/aos 
+   Custom animation  */
+
+   [data-aos="fade-up-short"] {
+    filter: brightness(50%);
+    transform: translate3d(0px, 30px, 0px);
+    transition-property: filter, transform;
+  }
+  [data-aos="fade-up-short"].aos-animate {
+    filter: brightness(100%);
+    transform: translate3d(0px, 0px, 0px);
+  }  
+  
+  .acnet-collection-list{
+    display: flex;
+    flex-direction: column;
+    padding: 6vw 6vw 6vw 6vw;
+  }
+  
+  .acnet-text_container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-bottom:15px;
+  }
+  
+  .acnet-text_container h2 {
+    margin:0;
+  }
+  
+  .acnet-slider {
+    overflow:hidden;
+  }
+  
+  
+  .acnet-row-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    line-height: 0;
+    padding-bottom: 20px;
+  }
+  
+  .acnet-row-container a {
+    text-decoration: none;
+    flex-grow: 1;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+  
+  .acnet-card-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  
+  .acnet-image-container img {
+    object-fit:cover;
+    object-position: top;
+    width: 100%;
+  }
+  
+  .acnet-label-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    position: absolute;
+  }
+  
+  
+  
+  
+  /* Control the ratio of collections images according with quantity of colums
+  The values of 1 colum is the same of 2 colums, this is to avoid desktop uses 1 colum */
+  
+  .acnet-columns-1, .acnet-columns-2, .acnet-columns-3{
+    width: 24vw;
+    max-width: 300px;
+  }
+  .acnet-columns-4{
+    width: 20vw;
+    max-width: 300px;
+  }
+  
+  .acnet-colum-ratio-horizontal-2, .acnet-colum-ratio-horizontal-3, .acnet-colum-ratio-horizontal-4,
+  .acnet-colum-ratio-square-2, .acnet-colum-ratio-square-3, .acnet-colum-ratio-square-4, 
+  .acnet-colum-ratio-portrait-2, .acnet-colum-ratio-portrait-3, .acnet-colum-ratio-portrait-4 {
+    max-height: 35vw;
+  }
+  
+  .acnet-colum-ratio-horizontal-1, .acnet-colum-ratio-square-1, .acnet-colum-ratio-portrait-1 {
+    max-height: 40vw;  
+  }
+  
+  
+  
+  .acnet-colum-ratio-horizontal-1, .acnet-colum-ratio-horizontal-2, .acnet-colum-ratio-horizontal-3 {
+    height: 40vw;
+  }
+  .acnet-colum-ratio-horizontal-4 {
+    height: 15vw;
+  }
+  .acnet-colum-ratio-square-1, .acnet-colum-ratio-square-2, .acnet-colum-ratio-square-3 {
+    height: 28vw;
+  }
+  .acnet-colum-ratio-square-4 {
+    height: 20vw;
+  }
+  .acnet-colum-ratio-portrait-1, .acnet-colum-ratio-portrait-2, .acnet-colum-ratio-portrait-3 {
+    height: 60vw;
+    max-height: 400px;
+  }
+  .acnet-colum-ratio-portrait-4 {
+    height: 40vw;
+    max-height: 400px;
+  }
+  
+  
+  .acnet-label-padding-1, .acnet-label-padding-2, .acnet-label-padding-3, .acnet-label-padding-4 {
+    padding:0 20px 0 20px;
+  } 
+  
+  .acnet-collection-sample{
+    background-color: rgb(246 246 246);
+    padding:30px;
+    margin:0;
+  }
+  
+  .acnet-collection-sample h3{
+    margin:0;
+  }
+  
+  
+  .acnet-button_container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  /* MOBIL CONFIGURATION */
+  
+  @media screen and (max-width: 750px) {
+  
+    .acnet-row-container {
+      justify-content: flex-start;
+    }
+    
+    .acnet-text_container {
+      width: 95%;
+    }
+    
+    .acnet-slider-onerow {
+      margin-right: -6vw;
+    }
+    
+    .swip_mobil {
+      flex-wrap: nowrap;
+      scroll-snap-type: x mandatory;
+      overflow-x:scroll;
+    }
+    
+    
+  /* Control the ratio of collections images 
+  according with quantity of colums
+  Replace the value of 4 columns for the value
+  of 3 columns to avoid mobil using 4 columns
+  */  
+    .acnet-columns-4{
+      width: 24vw;
+    }
+    
+    
+    .acnet-colum-ratio-horizontal-4 {
+      height: 20vw;
+    }  
+    .acnet-colum-ratio-square-4 {
+      height: 30vw;
+    }
+    .acnet-colum-ratio-portrait-4 {
+      height: 60vw;
+    }
+  
+    
+  /* Aplies the real value of 1 and 2 columns 
+  to be used only on mobiles*/  
+    .acnet-columns-1{
+      width: 85vw;
+    }
+    
+    .acnet-colum-ratio-horizontal-1 {
+      height: 55vw;
+    }  
+    .acnet-colum-ratio-square-1 {
+      height: 80vw;
+    }  
+    .acnet-colum-ratio-portrait-1 {
+      height: 115vw;
+    }  
+    .acnet-columns-2{
+      width: 39vw;
+    }
+    .acnet-colum-ratio-horizontal-2 {
+      height: 28vw;
+    }  
+    .acnet-colum-ratio-square-2 {
+      height: 39vw;
+    }  
+    .acnet-colum-ratio-portrait-2 {
+      height: 80vw;
+    }
+  
+    
+    .acnet-colum-ratio-horizontal-1, .acnet-colum-ratio-horizontal-2, .acnet-colum-ratio-horizontal-3, .acnet-colum-ratio-horizontal-4,
+    .acnet-colum-ratio-square-1, .acnet-colum-ratio-square-2, .acnet-colum-ratio-square-3, .acnet-colum-ratio-square-4, 
+    .acnet-colum-ratio-portrait-1, .acnet-colum-ratio-portrait-2, .acnet-colum-ratio-portrait-3, .acnet-colum-ratio-portrait-4 {
+      max-height: 130vw;
+    }
+  
+  
+    .acnet-label-padding-1 {
+      padding:0 20px 0 20px;
+    } 
+    .acnet-label-padding-2 {
+      padding:0 10px 0 10px;
+    } 
+    .acnet-label-padding-3, .acnet-label-padding-4 {
+      padding:0 7px 0 7px;
+    } 
+    
+    
+      .acnet-label-height-1 {
+      height: 65px;
+    }
+    .acnet-label-height-2 {
+      height: 50px;
+    }
+    .acnet-label-height-3, .acnet-label-height-4 {
+      height: 40px;
+    }  
+   
+    
+    .acnet-label-fontsize-1 {
+      font-size: 1.7rem;
+    }
+    .acnet-label-fontsize-2 {
+      font-size: 1.6rem;
+    }
+    .acnet-label-fontsize-3, .acnet-label-fontsize-4 {
+      font-size: 1.35rem;
+    }
+  }

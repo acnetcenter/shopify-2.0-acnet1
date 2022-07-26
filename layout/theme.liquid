@@ -212,6 +212,14 @@
       document.documentElement.classList.add('shopify-design-mode');
     }
     </script>
+
+<!-- ******************************************************************************************************************** -->
+<!-- acnet aos animation css -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  {{ 'acnet-base-custom.css' | asset_url | stylesheet_tag }}
+
+<!-- ******************************************************************************************************************** -->
+
   </head>
 
   <body class="gradient">
@@ -268,5 +276,13 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+<!-- ******************************************************************************************************************** -->
+    <!-- acnet aos animation js -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>AOS.init();</script>
+
+<!-- ******************************************************************************************************************** --> 
+
   </body>
 </html>
