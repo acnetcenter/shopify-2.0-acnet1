@@ -30,87 +30,6 @@
         "padding_bottom": 0
       }
     },
-    "1658838818be1a64ee": {
-      "type": "advance-rich-text",
-      "blocks": {
-        "165883881864f5f9e7-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1",
-            "title_custom_styling": false,
-            "title_color": "#000000",
-            "title_letter_spacing": 1,
-            "title_shadow": 0,
-            "title_shadow_color": "#000000",
-            "title_custom_position": false,
-            "title_top_margin": 0,
-            "title_effect": "none",
-            "title_animation_duration": "500",
-            "title_show_animation_once": true
-          }
-        },
-        "165883881864f5f9e7-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
-            "text_custom_styling": false,
-            "text_color": "#000000",
-            "text_letter_spacing": 1,
-            "text_shadow": 0,
-            "text_shadow_color": "#000000",
-            "text_custom_position": false,
-            "text_top_margin": 0,
-            "text_effect": "none",
-            "text_animation_duration": "500",
-            "text_show_animation_once": true
-          }
-        },
-        "165883881864f5f9e7-2": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_border_radius": false,
-            "button_custom_styling": false,
-            "button_color": "#000000",
-            "text_button_color": "#ffffff",
-            "button_custom_position": false,
-            "button_top_margin": 0,
-            "button_effect": "none",
-            "button_animation_duration": "500",
-            "button_show_animation_once": true
-          }
-        }
-      },
-      "block_order": [
-        "165883881864f5f9e7-0",
-        "165883881864f5f9e7-1",
-        "165883881864f5f9e7-2"
-      ],
-      "settings": {
-        "color_scheme": "background-1",
-        "content_position": "center",
-        "full_width": true,
-        "custom_background": false,
-        "background_color": "#ffffff",
-        "content_background_color": "#ffffff",
-        "content_background_color_opacity": 1,
-        "section_topline": false,
-        "section_bottomline": false,
-        "section_border_size": 1.5,
-        "section_border_color": "#000000",
-        "content_border": false,
-        "content_box_shadow": false,
-        "custom_position": false,
-        "section_margin": 5,
-        "content_margin": 0,
-        "content_effect": "none",
-        "content_animation_duration": "500",
-        "content_show_animation_once": true
-      }
-    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -292,7 +211,6 @@
   },
   "order": [
     "rich_text",
-    "1658838818be1a64ee",
     "image_banner",
     "featured_collection",
     "collage",
