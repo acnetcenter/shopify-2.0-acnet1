@@ -26,14 +26,14 @@
         "content_alignment": "center",
         "color_scheme": "accent-2",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
+        "padding_top": 56,
+        "padding_bottom": 56
       }
     },
-    "1658838818be1a64ee": {
+    "1660171963eda5ebe6": {
       "type": "advance-rich-text",
       "blocks": {
-        "165883881864f5f9e7-0": {
+        "1660171963c10bee07-0": {
           "type": "heading",
           "settings": {
             "heading": "Talk about your brand",
@@ -50,7 +50,7 @@
             "title_show_animation_once": true
           }
         },
-        "165883881864f5f9e7-1": {
+        "1660171963c10bee07-1": {
           "type": "text",
           "settings": {
             "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
@@ -66,7 +66,7 @@
             "text_show_animation_once": true
           }
         },
-        "165883881864f5f9e7-2": {
+        "1660171963c10bee07-2": {
           "type": "button",
           "settings": {
             "button_label": "Button label",
@@ -75,7 +75,7 @@
             "button_border_radius": false,
             "button_custom_styling": false,
             "button_color": "#000000",
-            "text_button_color": "#ffffff",
+            "text_button_color": "#FFFFFF",
             "button_custom_position": false,
             "button_top_margin": 0,
             "button_effect": "none",
@@ -85,17 +85,17 @@
         }
       },
       "block_order": [
-        "165883881864f5f9e7-0",
-        "165883881864f5f9e7-1",
-        "165883881864f5f9e7-2"
+        "1660171963c10bee07-0",
+        "1660171963c10bee07-1",
+        "1660171963c10bee07-2"
       ],
       "settings": {
         "color_scheme": "background-1",
         "content_position": "center",
         "full_width": true,
         "custom_background": false,
-        "background_color": "#ffffff",
-        "content_background_color": "#ffffff",
+        "background_color": "#FFFFFF",
+        "content_background_color": "#FFFFFF",
         "content_background_color_opacity": 1,
         "section_topline": false,
         "section_bottomline": false,
@@ -292,7 +292,7 @@
   },
   "order": [
     "rich_text",
-    "1658838818be1a64ee",
+    "1660171963eda5ebe6",
     "image_banner",
     "featured_collection",
     "collage",
