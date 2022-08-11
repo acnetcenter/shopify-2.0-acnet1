@@ -7,59 +7,64 @@
 <noscript>{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'advance-rich-text.css' | asset_url | stylesheet_tag }}</noscript>
 
-<div class="rich-text color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width{% endif %}"
+<div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
      style="{% if section.settings.custom_background %}background: {{ section.settings.background_color }};{% endif %} 
             {% if section.settings.section_topline %}border-top: solid {{ section.settings.section_border_size }}px {{ section.settings.section_border_color }}; {% endif %}  
             {% if section.settings.section_bottomline %}border-bottom: solid {{ section.settings.section_border_size }}px {{ section.settings.section_border_color }}; {% endif %}
             {% if section.settings.custom_position %}margin-top: {{ section.settings.section_margin }}rem; margin-bottom: {{ section.settings.section_margin }}rem;{% endif %}
            ">
-  <div class="rich-text__blocks"
-       {% if section.settings.content_effect != 'none' %}data-aos="{{section.settings.content_effect}}" data-aos-once="{{ section.settings.content_show_animation_once }}" data-aos-duration="{{ section.settings.content_animation_duration }}" data-aos-offset="0"{% endif %}
-       style="overflow:hidden;
-              {% if section.settings.custom_position %}margin-top: {{ section.settings.content_margin }}rem; margin-bottom: {{ section.settings.content_margin }}rem;{% endif %}
-       		    {% if section.settings.content_border %}border: solid {{ section.settings.section_border_size }}px {{ section.settings.section_border_color }}; padding: 20px;{% endif %}
-              {% if section.settings.custom_background %}background: {{ section.settings.content_background_color | color_modify: 'alpha', section.settings.content_background_color_opacity }};{% endif %}
-              {% if section.settings.content_box_shadow %}box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); padding: 20px;{% endif %}
-              {% if section.settings.content_background_color != section.settings.background_color %}padding: 20px;{% endif %}
-              ">
-    {%- for block in section.blocks -%}
-      {%- case block.type -%}
-        {%- when 'heading' -%}
-          <h2 class="{{ block.settings.heading_size }}"{{ block.shopify_attributes }}
-			  {% if block.settings.title_effect != 'none' %}data-aos="{{block.settings.title_effect}}" data-aos-once="{{ block.settings.title_show_animation_once }}" data-aos-duration="{{ block.settings.title_animation_duration }}" data-aos-offset="0"{% endif %}
-              style="{% if block.settings.title_custom_styling %}color: {{ block.settings.title_color }};{% endif %}
-                     {% if block.settings.title_letter_spacing > 0 %}letter-spacing: {{ block.settings.title_letter_spacing }}px;{% endif %}  
-                     {% if block.settings.title_shadow > 0 %}text-shadow: {{ block.settings.title_shadow }}px {{ block.settings.title_shadow }}px 6px {{ block.settings.title_shadow_color }};{% endif %}
-              		   {% if block.settings.title_custom_position %}margin-top: {{ block.settings.title_top_margin }}rem;{% endif %}"
-              >
-            {{ block.settings.heading | escape }}</h2>
-        {%- when 'text' -%}
-          <div class="rich-text__text rte"{{ block.shopify_attributes }}
-               {%if block.settings.text_effect != 'none'%}data-aos="{{ block.settings.text_effect}}" data-aos-once="{{ block.settings.text_show_animation_once }}" data-aos-duration="{{ block.settings.text_animation_duration }}" data-aos-offset="0"{% endif %}
-               style="{% if block.settings.text_custom_styling %}color:{{ block.settings.text_color }};{% endif %}
-                      {% if block.settings.text_letter_spacing > 0 %}letter-spacing: {{ block.settings.text_letter_spacing }}px;{% endif %}  
-                      {% if block.settings.text_shadow > 0 %}text-shadow: {{ block.settings.text_shadow }}px {{ block.settings.text_shadow }}px 6px {{ block.settings.text_shadow_color }};{% endif %}
-                      {% if block.settings.text_custom_position %}margin-top: {{ block.settings.text_top_margin }}rem;{% endif %}"
-               >
-            {{ block.settings.text }}</div>
-        {%- when 'button' -%}
-          <div style="margin-bottom:15px;"
-               {%if block.settings.button_effect != 'none'%}data-aos="{{ block.settings.button_effect}}" data-aos-once="{{ block.settings.button_show_animation_once }}" data-aos-duration="{{ block.settings.button_animation_duration }}" data-aos-offset="0"{% endif %}
-          >
-            <a{% if block.settings.button_link == blank %} aria-disabled="true"{% else %} href="{{ block.settings.button_link }}"{% endif %} class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}" 
-              {{ block.shopify_attributes }}
-              style="{% if block.settings.button_custom_styling %}
-                       box-shadow:none; opacity:1; color:{{ block.settings.text_button_color }}; background-color: {{ block.settings.button_color }}; 
-                     {% endif %} 
-                     {% if block.settings.button_border_radius == true %}border-radius: 25px;{% endif %} 
-                     {% if block.settings.button_custom_position %}margin-top: {{ block.settings.button_top_margin }}rem;{% endif %}"
-              >
-              {{ block.settings.button_label | escape }}
-            </a>
-    	  </div>
-      {%- endcase -%}
-    {%- endfor -%}
+  
+  <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
+  
+    <div class="rich-text__blocks"
+        {% if section.settings.content_effect != 'none' %}data-aos="{{section.settings.content_effect}}" data-aos-once="{{ section.settings.content_show_animation_once }}" data-aos-duration="{{ section.settings.content_animation_duration }}" data-aos-offset="0"{% endif %}
+        style="overflow:hidden;
+                {% if section.settings.custom_position %}margin-top: {{ section.settings.content_margin }}rem; margin-bottom: {{ section.settings.content_margin }}rem;{% endif %}
+                {% if section.settings.content_border %}border: solid {{ section.settings.section_border_size }}px {{ section.settings.section_border_color }}; padding: 20px;{% endif %}
+                {% if section.settings.custom_background %}background: {{ section.settings.content_background_color | color_modify: 'alpha', section.settings.content_background_color_opacity }};{% endif %}
+                {% if section.settings.content_box_shadow %}box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); padding: 20px;{% endif %}
+                {% if section.settings.content_background_color != section.settings.background_color %}padding: 20px;{% endif %}
+                ">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            <h2 class="{{ block.settings.heading_size }}"{{ block.shopify_attributes }}
+          {% if block.settings.title_effect != 'none' %}data-aos="{{block.settings.title_effect}}" data-aos-once="{{ block.settings.title_show_animation_once }}" data-aos-duration="{{ block.settings.title_animation_duration }}" data-aos-offset="0"{% endif %}
+                style="{% if block.settings.title_custom_styling %}color: {{ block.settings.title_color }};{% endif %}
+                      {% if block.settings.title_letter_spacing > 0 %}letter-spacing: {{ block.settings.title_letter_spacing }}px;{% endif %}  
+                      {% if block.settings.title_shadow > 0 %}text-shadow: {{ block.settings.title_shadow }}px {{ block.settings.title_shadow }}px 6px {{ block.settings.title_shadow_color }};{% endif %}
+                      {% if block.settings.title_custom_position %}margin-top: {{ block.settings.title_top_margin }}rem;{% endif %}"
+                >
+              {{ block.settings.heading | escape }}</h2>
+          {%- when 'text' -%}
+            <div class="rich-text__text rte"{{ block.shopify_attributes }}
+                {%if block.settings.text_effect != 'none'%}data-aos="{{ block.settings.text_effect}}" data-aos-once="{{ block.settings.text_show_animation_once }}" data-aos-duration="{{ block.settings.text_animation_duration }}" data-aos-offset="0"{% endif %}
+                style="{% if block.settings.text_custom_styling %}color:{{ block.settings.text_color }};{% endif %}
+                        {% if block.settings.text_letter_spacing > 0 %}letter-spacing: {{ block.settings.text_letter_spacing }}px;{% endif %}  
+                        {% if block.settings.text_shadow > 0 %}text-shadow: {{ block.settings.text_shadow }}px {{ block.settings.text_shadow }}px 6px {{ block.settings.text_shadow_color }};{% endif %}
+                        {% if block.settings.text_custom_position %}margin-top: {{ block.settings.text_top_margin }}rem;{% endif %}"
+                >
+              {{ block.settings.text }}</div>
+          {%- when 'button' -%}
+            <div style="margin-bottom:15px;"
+                {%if block.settings.button_effect != 'none'%}data-aos="{{ block.settings.button_effect}}" data-aos-once="{{ block.settings.button_show_animation_once }}" data-aos-duration="{{ block.settings.button_animation_duration }}" data-aos-offset="0"{% endif %}
+            >
+              <a{% if block.settings.button_link == blank %} aria-disabled="true"{% else %} href="{{ block.settings.button_link }}"{% endif %} class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}" 
+                {{ block.shopify_attributes }}
+                style="{% if block.settings.button_custom_styling %}
+                        box-shadow:none; opacity:1; color:{{ block.settings.text_button_color }}; background-color: {{ block.settings.button_color }}; 
+                      {% endif %} 
+                      {% if block.settings.button_border_radius == true %}border-radius: 25px;{% endif %} 
+                      {% if block.settings.button_custom_position %}margin-top: {{ block.settings.button_top_margin }}rem;{% endif %}"
+                >
+                {{ block.settings.button_label | escape }}
+              </a>
+          </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
   </div>
+
 </div>
 
 {% schema %}
