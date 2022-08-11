@@ -7,7 +7,7 @@
 <noscript>{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'advance-rich-text.css' | asset_url | stylesheet_tag }}</noscript>
 
-<div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
+<div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding"
      style="{% if section.settings.custom_background %}background: {{ section.settings.background_color }};{% endif %} 
             {% if section.settings.section_topline %}border-top: solid {{ section.settings.section_border_size }}px {{ section.settings.section_border_color }}; {% endif %}  
             {% if section.settings.section_bottomline %}border-bottom: solid {{ section.settings.section_border_size }}px {{ section.settings.section_border_color }}; {% endif %}
